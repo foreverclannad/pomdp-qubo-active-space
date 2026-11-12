@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pomdp-active-space"
+version = "1.0.0"
+description = "Bayesian computation control for multireference active spaces"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE"]
+dependencies = ["numpy", "scipy", "h5py"]
+
+[project.optional-dependencies]
+chemistry = ["pyscf"]
+validation = ["pytest>=9"]
+
+[project.urls]
+Repository = "https://github.com/foreverclannad/pomdp-active-space"
+
+[project.scripts]
+pas = "pas_release.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pas", "pas.*", "pas_release", "pas_release.reproduction"]
+namespaces = false
+
+[tool.setuptools.package-data]
+pas = ["anneal.c"]
+pas_release = ["core_manifest.json", "offline_example/*.json", "offline_example/*.npz", "offline_example/*.fch", "offline_example/*.md", "data/*.json", "data/small_molecules/*.py", "data/small_molecules/*.json", "data/small_molecules/LICENSE", "data/small_molecules/inputs/*.json", "data/small_molecules/results/*/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not integration and not mokit'"
+markers = ["integration: optional native Block2/FCI solver checks", "mokit: optional MOKIT/PySCF file import checks"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["pas_release/data", "pas_release/reproduction/legacy_dio.py", "pas_release/reproduction/legacy_alpha.py", "outputs"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

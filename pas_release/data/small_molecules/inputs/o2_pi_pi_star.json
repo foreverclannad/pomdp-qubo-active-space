@@ -1,0 +1,36 @@
+{
+  "schema": "minimal_valence_control_input_v1",
+  "job": "active_space_control",
+  "key": "O2_pi_pi_star",
+  "design_role": "Open-shell valence control",
+  "purpose": "Test a compact triplet pi/pi* target with open-shell occupation.",
+  "claim_tier": "Control",
+  "molecule": {
+    "atoms": [
+      ["O", 0.0, 0.0, -0.6035],
+      ["O", 0.0, 0.0, 0.6035]
+    ],
+    "basis": "6-31g*",
+    "charge": 0,
+    "spin": 2,
+    "point_group": "d2h"
+  },
+  "active_space": {
+    "electrons": 6,
+    "orbitals": 4,
+    "target_labels": ["O 2px", "O 2py"]
+  },
+  "selection": {
+    "avas_threshold": 0.2,
+    "observation_weight": 0.85,
+    "cardinality_penalty": 10.0,
+    "scf_conv_tol": 1.0e-10
+  },
+  "claim_expectation": {
+    "occupation_bins": {
+      "doubly_occupied": 2,
+      "singly_occupied": 2,
+      "empty": 0
+    }
+  }
+}

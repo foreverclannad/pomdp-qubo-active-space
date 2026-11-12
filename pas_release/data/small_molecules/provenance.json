@@ -1,0 +1,21 @@
+{
+  "repository": "https://github.com/foreverclannad/minimal-valence-control-suite",
+  "commit": "49f056efba9696ffcdfb8d50c55b8a8e40757988",
+  "files": {
+    "control_core.py": "a0a76b844c2e2bac7be3f16e36a7821b022ba7bafc4a541fe3617c77afc6f5ec",
+    "LICENSE": "89981b28a1cdeca2c53ed422076016322c20b5d62d99825e14a9516232a8507e",
+    "inputs/h2.json": "c0ad8d992b5997b7626a1f2006992ca33b909d05ac024ed7f9347c2ede7bc010",
+    "inputs/hf.json": "a6bc969108c362464c3e0880211de1c2958c790704dc8cf2402584b5f517fc02",
+    "inputs/h2o.json": "eb20ec78b7382b82cdb6c86452bf3388a2155f192312eaa085af18417016787f",
+    "inputs/nh3.json": "3e96eb67261785c7e62228c3367149c8a9d85fc3b36286401014f6f79fee099a",
+    "inputs/o2_pi_pi_star.json": "dfd276a156a822625c0788a5205a89dbdd5c32a635ff539082ed46d07739f20e",
+    "inputs/h2o_symmetry.json": "92aaed7f1adabf74f657367313e706f73afef7318ea55bc22550c7a2cb036d2d",
+    "results/H2/result.json": "90e7ce59fd4b77d8415b961db007f97a610a5ce285e2e68be27334d42be9397a",
+    "results/HF/result.json": "79b923c6205cd90c7949516e095712805d9520655c179eed2290e9b2a730c207",
+    "results/H2O/result.json": "be27f27c92a280861c0508a4096596a8585acca26bd11627ef5ad1b0c7d5a87b",
+    "results/NH3/result.json": "2ff2dea1d50bf1992feb40cb82119b265c1c5e473d54174abfe6866e3d6e754b",
+    "results/O2_pi_pi_star/result.json": "0cd075c5e12f1705f519619f4ba846f165ed642b743307f71e34e32c55e1bbee",
+    "results/H2O_C1_C2v/result.json": "9d9f36c4f07283ec6364b985f393679c95c73554c33a8532b4180118e4b147d3"
+  },
+  "role": "independent small-molecule component; not PAS c06614a source"
+}

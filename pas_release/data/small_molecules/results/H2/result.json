@@ -1,0 +1,528 @@
+{
+  "schema": "minimal_valence_control_result_v1",
+  "key": "H2",
+  "design_role": "Pure valence control",
+  "purpose": "Recover the minimal bonding/antibonding valence pair.",
+  "claim_tier": "Control",
+  "route": {
+    "symmetry_enabled": false,
+    "requested_point_group": "c1",
+    "detected_point_group": "C1"
+  },
+  "molecule": {
+    "atom": "H 0 0 0; H 0 0 0.74",
+    "basis": "6-31g*",
+    "charge": 0,
+    "spin": 0,
+    "electron_count": 2,
+    "scf_method": "RHF",
+    "scf_energy_hartree": -1.1267553171969305,
+    "scf_converged": true
+  },
+  "active_space_target": {
+    "electrons": 2,
+    "orbitals": 2,
+    "ao_labels": [
+      "H 1s"
+    ]
+  },
+  "selection_pipeline": [
+    "PySCF SCF",
+    "AVAS target observation",
+    "POMDP cold-start belief",
+    "initial single-state CASCI validation",
+    "physical-feedback belief update",
+    "complete fixed-budget QUBO subset proposal",
+    "candidate CASCI validation",
+    "lexicographic accept or rollback",
+    "repeat until a defined stop condition"
+  ],
+  "avas_observation": {
+    "threshold": 0.2,
+    "reported_ncas": 2,
+    "reported_nelecas": 2,
+    "candidate_indices": [
+      0,
+      1
+    ],
+    "occ_weights": [
+      0.9999999999999999
+    ],
+    "vir_weights": [
+      0.999999999999998,
+      0.0,
+      0.0
+    ],
+    "target_ao_indices": [
+      0,
+      2
+    ],
+    "mo_basis_kind": "avas_observation_mo",
+    "mo_coeff_source": "pyscf.mcscf.avas.AVAS.kernel"
+  },
+  "pomdp": {
+    "prior_probability": 0.5,
+    "observation_weight": 0.85,
+    "posterior_entropy": 1.0655378530716866
+  },
+  "qubo_action": {
+    "solver": "exact_fixed_budget_top_k",
+    "objective": "-sum(p_i*x_i) + lambda*(sum(x_i)-k)^2",
+    "target_cardinality": 2,
+    "cardinality_penalty": 10.0,
+    "selected_indices": [
+      0,
+      1
+    ],
+    "qubo_energy": -1.849999999999998,
+    "proposal_kind": "complete_active_orbital_set"
+  },
+  "selected_active_space": {
+    "indices": [
+      0,
+      1
+    ],
+    "index_basis": "avas_observation_mo",
+    "selected_electron_sum": 1.9999999999999998,
+    "occupation_bins": {
+      "doubly_occupied": 1,
+      "singly_occupied": 0,
+      "empty": 1
+    },
+    "post_core_block": [
+      0,
+      1
+    ],
+    "projection_score": 1.9999999999999978,
+    "minimum_selected_target_ao_projection": 0.48784680891236953
+  },
+  "checks": {
+    "scf_converged": true,
+    "qubo_budget_exact": true,
+    "avas_orbital_count_matches_target": true,
+    "avas_electron_count_matches_target": true,
+    "selected_electron_count_matches_target": true,
+    "complete_avas_target_recovered": true,
+    "selected_block_is_post_core_active_block": true,
+    "all_selected_avas_scores_pass_threshold": true,
+    "occupation_pattern_matches_claim": true,
+    "closed_loop_passed": true,
+    "closed_loop_final_target_recovered": true
+  },
+  "passed": true,
+  "orbital_table": [
+    {
+      "mo": 0,
+      "selected": true,
+      "avas_candidate": true,
+      "avas_score": 0.9999999999999999,
+      "posterior_belief": 0.9249999999999998,
+      "target_ao_projection": 0.48784680891236953,
+      "occupation": 1.9999999999999998,
+      "fock_diagonal_hartree": -0.5958173471882877
+    },
+    {
+      "mo": 1,
+      "selected": true,
+      "avas_candidate": true,
+      "avas_score": 0.999999999999998,
+      "posterior_belief": 0.9249999999999983,
+      "target_ao_projection": 0.660602120507641,
+      "occupation": -1.633877561450439e-17,
+      "fock_diagonal_hartree": 0.4779270169551066
+    },
+    {
+      "mo": 2,
+      "selected": false,
+      "avas_candidate": false,
+      "avas_score": 0.0,
+      "posterior_belief": 0.07500000000000001,
+      "target_ao_projection": 0.51215319108763,
+      "occupation": 8.131614561385962e-18,
+      "fock_diagonal_hartree": 0.7747229621491724
+    },
+    {
+      "mo": 3,
+      "selected": false,
+      "avas_candidate": false,
+      "avas_score": 0.0,
+      "posterior_belief": 0.07500000000000001,
+      "target_ao_projection": 0.33939787949235906,
+      "occupation": -1.4591360441415649e-18,
+      "fock_diagonal_hartree": 1.1649577299648903
+    }
+  ],
+  "closed_loop": {
+    "schema": "minimal_fixed_budget_closed_loop_v1",
+    "config": {
+      "backend": "casci",
+      "max_rounds": 4,
+      "minimum_trial_rounds": 2,
+      "rejection_patience": 2,
+      "feedback_weight": 0.35,
+      "qubo_weights": {
+        "target": 3.0,
+        "belief": 1.0,
+        "correlation": 0.75
+      },
+      "target_tolerance": 1e-05,
+      "correlation_tolerance": 1e-05,
+      "energy_tolerance_hartree": 1e-07,
+      "qubo_tolerance": 1e-10,
+      "target_floor": 0.2,
+      "belief_change_tolerance": 1e-06,
+      "casscf": {
+        "max_cycle_macro": 30,
+        "conv_tol": 1e-08
+      }
+    },
+    "backend_contract": {
+      "selected_backend": "casci",
+      "required_outputs": [
+        "single-state energy",
+        "orbital-resolved activity",
+        "optimized active-subspace support",
+        "state identity",
+        "convergence status"
+      ],
+      "dmrg_compatible": "A DMRG adapter can implement the same PhysicalValidator evaluate(active_indices) contract."
+    },
+    "fixed_budget": {
+      "target_electrons": 2,
+      "target_orbitals": 2,
+      "required_open_shell_indices": [],
+      "feasible_subset_count": 3
+    },
+    "initial_active_indices": [
+      0,
+      1
+    ],
+    "initial_physical_evaluation": {
+      "active_indices": [
+        0,
+        1
+      ],
+      "feasible": true,
+      "converged": true,
+      "energy_hartree": -1.145037641991839,
+      "target_quality": 0.9999999999999982,
+      "correlation_score": 0.027112943609110537,
+      "orbital_activity": [
+        0.027112943609110873,
+        0.027112943609110204,
+        0.0,
+        0.0
+      ],
+      "active_subspace_support": [
+        0.9999999999999998,
+        0.9999999999999989,
+        2.165934727316467e-31,
+        6.132048852162225e-31
+      ],
+      "observation_basis_occupations": [
+        1.9728870563908891,
+        0.027112943609110204,
+        0.0,
+        0.0
+      ],
+      "natural_occupations": [
+        1.9728870563908893,
+        0.027112943609110225
+      ],
+      "evidence_id": "sha256:098a313539ed460c8a8c89b0a16bd4b96a436373bb7f4d3fd9bdf0da43e7880c",
+      "backend": "casci",
+      "state": {
+        "root": 0,
+        "spin_2s": 0,
+        "state_count": 1,
+        "nelecas": [
+          1,
+          1
+        ],
+        "ncore": 0
+      },
+      "error": ""
+    },
+    "initial_belief_update_l2": 0.06986644785272583,
+    "rounds": [
+      {
+        "round": 1,
+        "forced_minimum_trial": true,
+        "incumbent_before": [
+          0,
+          1
+        ],
+        "qubo_action": {
+          "proposal_kind": "complete_fixed_budget_subset",
+          "active_indices": [
+            0,
+            2
+          ],
+          "removed_indices": [
+            1
+          ],
+          "added_indices": [
+            2
+          ],
+          "orbital_replacement_count": 1,
+          "objective": -3.9522326137594708,
+          "incumbent_objective": -7.806965227518933,
+          "solver": "exact_feasible_subset_enumeration",
+          "feasible_subset_count": 3
+        },
+        "physical_evaluation": {
+          "active_indices": [
+            0,
+            2
+          ],
+          "feasible": true,
+          "converged": true,
+          "energy_hartree": -1.13289718687416,
+          "target_quality": 0.49999999999999983,
+          "correlation_score": 0.006299417926570066,
+          "orbital_activity": [
+            0.006299417926570516,
+            0.0,
+            0.006299417926569616,
+            0.0
+          ],
+          "active_subspace_support": [
+            0.9999999999999998,
+            1.5099978309545777e-31,
+            0.9999999999999976,
+            4.365523801071071e-31
+          ],
+          "observation_basis_occupations": [
+            1.9937005820734295,
+            0.0,
+            0.006299417926569616,
+            0.0
+          ],
+          "natural_occupations": [
+            1.9937117482392686,
+            0.006288251760731247
+          ],
+          "evidence_id": "sha256:5a3d9dae74c811e0ecbc445678823ca8bd51e1c5351d3a5a51938701bbded07c",
+          "backend": "casci",
+          "state": {
+            "root": 0,
+            "spin_2s": 0,
+            "state_count": 1,
+            "nelecas": [
+              1,
+              1
+            ],
+            "ncore": 0
+          },
+          "error": ""
+        },
+        "belief_update": {
+          "l2_change": 0.1404717014032501,
+          "maximum_absolute_change": 0.11660176711842307,
+          "belief_before": [
+            0.8831479060526377,
+            0.883147906052636,
+            0.04875000000000001,
+            0.04875000000000001
+          ],
+          "belief_after": [
+            0.8544870981890744,
+            0.766546138934213,
+            0.11962845925485967,
+            0.03168750000000001
+          ]
+        },
+        "adjudication": {
+          "accepted": false,
+          "decisive_level": "target_quality",
+          "reason": "candidate degrades AO-target quality",
+          "target_quality_delta": -0.4999999999999984,
+          "correlation_score_delta": -0.02081352568254047,
+          "energy_delta_hartree": 0.012140455117679139,
+          "policy": "hard feasibility/state -> target quality -> correlation quality -> lower energy"
+        },
+        "rollback": true,
+        "incumbent_after": [
+          0,
+          1
+        ]
+      },
+      {
+        "round": 2,
+        "forced_minimum_trial": true,
+        "incumbent_before": [
+          0,
+          1
+        ],
+        "qubo_action": {
+          "proposal_kind": "complete_fixed_budget_subset",
+          "active_indices": [
+            0,
+            3
+          ],
+          "removed_indices": [
+            1
+          ],
+          "added_indices": [
+            3
+          ],
+          "orbital_replacement_count": 1,
+          "objective": -3.890899161634002,
+          "incumbent_objective": -7.625757800568209,
+          "solver": "exact_feasible_subset_enumeration",
+          "feasible_subset_count": 3
+        },
+        "physical_evaluation": {
+          "active_indices": [
+            0,
+            3
+          ],
+          "feasible": true,
+          "converged": true,
+          "energy_hartree": -1.1281496388708105,
+          "target_quality": 0.49999999999999983,
+          "correlation_score": 0.0010194634455116577,
+          "orbital_activity": [
+            0.0010194634455118479,
+            0.0,
+            1.065983906260803e-17,
+            0.0010194634455114675
+          ],
+          "active_subspace_support": [
+            0.9999999999999998,
+            8.497375236700836e-31,
+            2.1394818789263484e-31,
+            0.9999999999999984
+          ],
+          "observation_basis_occupations": [
+            1.9989805365544882,
+            0.0,
+            1.065983906260803e-17,
+            0.0010194634455114675
+          ],
+          "natural_occupations": [
+            1.9989805365544886,
+            0.001019463445511467
+          ],
+          "evidence_id": "sha256:d5369356f1e2875e55ebd67514ecedda320dbd23dad32fa4f8d13b7b23378637",
+          "backend": "casci",
+          "state": {
+            "root": 0,
+            "spin_2s": 0,
+            "state_count": 1,
+            "nelecas": [
+              1,
+              1
+            ],
+            "ncore": 0
+          },
+          "error": ""
+        },
+        "belief_update": {
+          "l2_change": 0.11707972350482661,
+          "maximum_absolute_change": 0.07648073744118566,
+          "belief_before": [
+            0.8544870981890744,
+            0.766546138934213,
+            0.11962845925485967,
+            0.03168750000000001
+          ],
+          "belief_after": [
+            0.8354879762640841,
+            0.6907549903072381,
+            0.07775849851565879,
+            0.10816823744118567
+          ]
+        },
+        "adjudication": {
+          "accepted": false,
+          "decisive_level": "target_quality",
+          "reason": "candidate degrades AO-target quality",
+          "target_quality_delta": -0.4999999999999984,
+          "correlation_score_delta": -0.02609348016359888,
+          "energy_delta_hartree": 0.01688800312102856,
+          "policy": "hard feasibility/state -> target quality -> correlation quality -> lower energy"
+        },
+        "rollback": true,
+        "incumbent_after": [
+          0,
+          1
+        ]
+      }
+    ],
+    "round_count": 2,
+    "proposal_count": 2,
+    "accepted_count": 0,
+    "rejected_count": 2,
+    "rollback_count": 2,
+    "final_active_indices": [
+      0,
+      1
+    ],
+    "final_physical_evaluation": {
+      "active_indices": [
+        0,
+        1
+      ],
+      "feasible": true,
+      "converged": true,
+      "energy_hartree": -1.145037641991839,
+      "target_quality": 0.9999999999999982,
+      "correlation_score": 0.027112943609110537,
+      "orbital_activity": [
+        0.027112943609110873,
+        0.027112943609110204,
+        0.0,
+        0.0
+      ],
+      "active_subspace_support": [
+        0.9999999999999998,
+        0.9999999999999989,
+        2.165934727316467e-31,
+        6.132048852162225e-31
+      ],
+      "observation_basis_occupations": [
+        1.9728870563908891,
+        0.027112943609110204,
+        0.0,
+        0.0
+      ],
+      "natural_occupations": [
+        1.9728870563908893,
+        0.027112943609110225
+      ],
+      "evidence_id": "sha256:098a313539ed460c8a8c89b0a16bd4b96a436373bb7f4d3fd9bdf0da43e7880c",
+      "backend": "casci",
+      "state": {
+        "root": 0,
+        "spin_2s": 0,
+        "state_count": 1,
+        "nelecas": [
+          1,
+          1
+        ],
+        "ncore": 0
+      },
+      "error": ""
+    },
+    "final_belief": [
+      0.8354879762640841,
+      0.6907549903072381,
+      0.07775849851565879,
+      0.10816823744118567
+    ],
+    "stop_reason": "rejection patience reached",
+    "checks": {
+      "initial_physical_calculation_feasible": true,
+      "physical_backend_matches_config": true,
+      "single_state_identity_preserved": true,
+      "final_orbital_budget_exact": true,
+      "final_electron_budget_exact": true,
+      "every_qubo_action_is_complete_set": true,
+      "target_floor_preserved": true,
+      "minimum_trial_requirement_met": true,
+      "terminated_by_defined_condition": true
+    },
+    "passed": true
+  }
+}

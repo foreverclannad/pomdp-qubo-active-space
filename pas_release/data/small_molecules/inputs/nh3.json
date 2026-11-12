@@ -1,0 +1,38 @@
+{
+  "schema": "minimal_valence_control_input_v1",
+  "job": "active_space_control",
+  "key": "NH3",
+  "design_role": "Pure valence control",
+  "purpose": "Test a larger closed-shell main-group valence target.",
+  "claim_tier": "Control",
+  "molecule": {
+    "atoms": [
+      ["N", 0.0, 0.0, 0.0],
+      ["H", 0.0, 0.9377, -0.3816],
+      ["H", 0.8121, -0.4689, -0.3816],
+      ["H", -0.8121, -0.4689, -0.3816]
+    ],
+    "basis": "6-31g*",
+    "charge": 0,
+    "spin": 0,
+    "point_group": "c3v"
+  },
+  "active_space": {
+    "electrons": 8,
+    "orbitals": 7,
+    "target_labels": ["N 2s", "N 2p", "H 1s"]
+  },
+  "selection": {
+    "avas_threshold": 0.2,
+    "observation_weight": 0.85,
+    "cardinality_penalty": 10.0,
+    "scf_conv_tol": 1.0e-10
+  },
+  "claim_expectation": {
+    "occupation_bins": {
+      "doubly_occupied": 4,
+      "singly_occupied": 0,
+      "empty": 3
+    }
+  }
+}

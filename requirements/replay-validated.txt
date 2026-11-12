@@ -1,0 +1,6 @@
+# Python environment used for local paper reproduction.
+numpy==2.4.3
+scipy==1.17.1
+h5py==3.16.0
+pyscf==2.13.0
+pytest==9.0.3

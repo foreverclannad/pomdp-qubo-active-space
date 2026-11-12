@@ -1,0 +1,465 @@
+{
+  "schema": "pas_paper_expected_v1",
+  "provenance": "Frozen before packaging from the selected c06614a audit and paper manuscript; not generated from the package test outputs",
+  "absolute_tolerance": 1e-12,
+  "results": {
+    "NX1_DMRG": {
+      "metrics": {
+        "occupation": 0.19990671085805709,
+        "composition": 0.6313897533127285,
+        "qit": 0.09277473469037337,
+        "quality": 0.30802373295371965,
+        "energy": -301.83197241085236
+      },
+      "root_energies_hartree": [
+        -301.8351383662913,
+        -301.8288064554135
+      ],
+      "output_active": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "basis_sha256": "f43e9dafdd8d57fb9852bfc67cf7c840625e8d5d7b441c0808ed78d75ebe0b45",
+      "gap_eV": 0.17230007257111396,
+      "references": {
+        "reference_subspace": {
+          "directions": 13,
+          "dimension": 13,
+          "minimum_singular_value": 0.999999915788594
+        }
+      }
+    },
+    "CI_OO_DMRG": {
+      "metrics": {
+        "occupation": 0.19711992746845639,
+        "composition": 0.632283125425851,
+        "qit": 0.13045263477370506,
+        "quality": 0.3199518958893375,
+        "energy": -301.8315190997221
+      },
+      "root_energies_hartree": [
+        -301.83231673559635,
+        -301.83072146384785
+      ],
+      "output_active": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "basis_sha256": "258962aa262416bf461afbbe18ea51c12e2d10007cc9c034d1c9d24016b51778",
+      "gap_eV": 0.04340955571572631,
+      "references": {
+        "reference_subspace": {
+          "directions": 13,
+          "dimension": 13,
+          "minimum_singular_value": 0.9999999405089313
+        }
+      }
+    },
+    "NX1_CAS": {
+      "metrics": {
+        "occupation": 0.19991285764420902,
+        "composition": 0.6089488043043794,
+        "quality": 0.4044308309742942,
+        "energy": -301.8319727049336
+      },
+      "root_energies_hartree": [
+        -301.83513881315605,
+        -301.8288065967111
+      ],
+      "output_active": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "basis_sha256": "f6f9b2d8e2e8d2a065560925faf251f4ce81dbc7dd775d9e2a9c54e7dbd7cfaa",
+      "gap_eV": 0.1723083874766218,
+      "references": {
+        "reference_subspace": {
+          "directions": 13,
+          "dimension": 13,
+          "minimum_singular_value": 0.9999998276027658
+        }
+      }
+    },
+    "CI_OO_CAS": {
+      "metrics": {
+        "occupation": 0.19778325384490425,
+        "composition": 0.622270785459783,
+        "quality": 0.4100270196523436,
+        "energy": -301.8233843423026
+      },
+      "root_energies_hartree": [
+        -301.8349881685593,
+        -301.8117805160458
+      ],
+      "output_active": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "basis_sha256": "6c96ab5ae4ef77bab9a98617453dab2795bd223d2cae59cdd6ffb00fde720481",
+      "gap_eV": 0.6315123964065164,
+      "references": {
+        "reference_subspace": {
+          "directions": 12,
+          "dimension": 13,
+          "minimum_singular_value": 0.009881922630761566
+        }
+      }
+    },
+    "TiF3": {
+      "metrics": {
+        "occupation": 0.05403855586905422,
+        "composition": 0.8369306757175574,
+        "qit": 0.020157478112421336,
+        "quality": 0.303708903233011,
+        "energy": -1151.8049050799164
+      },
+      "root_energies_hartree": [
+        -1151.8560524511577,
+        -1151.8299389016797,
+        -1151.8299222582332,
+        -1151.7543132485844,
+        -1151.754298539927
+      ],
+      "output_active": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        32,
+        35,
+        36,
+        41
+      ],
+      "basis_sha256": "2d68647c52da7e3aca6fdafffed5fc59c09b337a81ad8abb83221517f8331bf6",
+      "pair_means_cm_inverse": [
+        5733.088052593759,
+        22330.788069274786
+      ],
+      "references": {}
+    },
+    "controls": {
+      "A": {
+        "evidence_id": "84ff406819ffcd21db8664a61dd67a48d149dba995795e33ebedce3f3b794d21",
+        "metrics": {
+          "occupation": 0.19991285764420902,
+          "composition": 0.6089488043043794,
+          "quality": 0.4044308309742942,
+          "energy": -301.8319727049336
+        },
+        "metric_errors": {
+          "occupation": 0.0,
+          "composition": 0.0,
+          "quality": 0.0,
+          "energy": 0.0
+        },
+        "density_max_error": 0.0,
+        "ao_reconstruction_errors": {
+          "projection": 0.0,
+          "pair": 0.0
+        },
+        "root_energies_hartree": [
+          -301.83513881315605,
+          -301.8288065967111
+        ],
+        "energy_endpoint": "ROOT_ENERGIES in signed CASSCF HDF5",
+        "orbital_container_energy_max_difference": 0.0,
+        "output_active": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "basis_sha256": "f6f9b2d8e2e8d2a065560925faf251f4ce81dbc7dd775d9e2a9c54e7dbd7cfaa",
+        "gap_eV": 0.1723083874766218,
+        "coverage": 13,
+        "minimum_singular_value": 0.9999998276027658,
+        "delta_average_energy_mEh": 0.0
+      },
+      "B": {
+        "evidence_id": "cc4840de58304bfba5aa1f9fde3917c7bf2415386f346d70b678622b363d047c",
+        "metrics": {
+          "occupation": 0.200304154766799,
+          "composition": 0.5989029512491801,
+          "quality": 0.39960355300798955,
+          "energy": -301.8274697093386
+        },
+        "metric_errors": {
+          "occupation": 0.0,
+          "composition": 0.0,
+          "quality": 0.0,
+          "energy": 0.0
+        },
+        "density_max_error": 0.0,
+        "ao_reconstruction_errors": {
+          "projection": 0.0,
+          "pair": 0.0
+        },
+        "root_energies_hartree": [
+          -301.837856388236,
+          -301.81708303044115
+        ],
+        "energy_endpoint": "ROOT_ENERGIES in signed CASSCF HDF5",
+        "orbital_container_energy_max_difference": 0.0,
+        "output_active": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "basis_sha256": "7ce661a79deae890e8000f92d6137ad3dfe6086e834d9ca3d6280cef87c04e65",
+        "gap_eV": 0.5652718625814278,
+        "coverage": 12,
+        "minimum_singular_value": 0.016374800529425117,
+        "delta_average_energy_mEh": 4.502995595032644
+      },
+      "C": {
+        "evidence_id": "e22dd293458d1e93fc53178d7f971ed374f77a04bf86a4bb5e6e1489d4920c19",
+        "metrics": {
+          "occupation": 0.2003025918467339,
+          "composition": 0.5989039911365209,
+          "quality": 0.39960329149162743,
+          "energy": -301.8274697040672
+        },
+        "metric_errors": {
+          "occupation": 0.0,
+          "composition": 0.0,
+          "quality": 0.0,
+          "energy": 0.0
+        },
+        "density_max_error": 0.0,
+        "ao_reconstruction_errors": {
+          "projection": 0.0,
+          "pair": 0.0
+        },
+        "root_energies_hartree": [
+          -301.83785650452876,
+          -301.8170829036057
+        ],
+        "energy_endpoint": "ROOT_ENERGIES in signed CASSCF HDF5",
+        "orbital_container_energy_max_difference": 0.0,
+        "output_active": [
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "basis_sha256": "74b46db7ae27e68f851208b3793fe5372c71115753a9d68c3e8dee3a1238b647",
+        "gap_eV": 0.5652784784375169,
+        "coverage": 12,
+        "minimum_singular_value": 0.01636880616626768,
+        "delta_average_energy_mEh": 4.503000866407092
+      }
+    },
+    "CI_CC": {
+      "scope": "Initial CASSCF endpoint retained; no optimization trajectory",
+      "comparison": {
+        "available": true,
+        "dimension": 13,
+        "singular_values": [
+          0.9999999999160546,
+          0.9999999993645591,
+          0.9999999989526889,
+          0.9999999975337726,
+          0.9999999931232232,
+          0.9999999912120677,
+          0.9999999234219527,
+          0.9999998830044768,
+          0.9999997804103804,
+          0.9999997102170401,
+          0.9999996251389782,
+          0.9999991356060883,
+          0.9999986202982222
+        ],
+        "minimum_singular_value": 0.9999986202982222,
+        "mean_singular_value": 0.9999997429384233,
+        "mean_squared_singular_value": 0.9999994858770734,
+        "sum_squared_singular_values": 12.999993316401955,
+        "principal_angles_radians": [
+          1.2957268707795989e-05,
+          3.564942978984409e-05,
+          4.576704331491291e-05,
+          7.023143805305638e-05,
+          0.00011727554581018862,
+          0.00013257399657279684,
+          0.00039135162788749684,
+          0.00048372621479445183,
+          0.0006627060096837705,
+          0.0007612922879498597,
+          0.0008658649377347669,
+          0.0013148338573370176,
+          0.0016611454452208822
+        ],
+        "principal_angles_degrees": [
+          0.0007423968109736401,
+          0.0020425618690060156,
+          0.0026222584227369385,
+          0.004023964989574618,
+          0.006719393815016953,
+          0.0075959304768030995,
+          0.02242279658352786,
+          0.02771547054756081,
+          0.03797025741283591,
+          0.04361883507538514,
+          0.04961040656055996,
+          0.0753344307863173,
+          0.09517662316853664
+        ],
+        "maximum_principal_angle_degrees": 0.09517662316853664,
+        "directions_at_or_above_0_90": 13,
+        "directions_at_or_above_0_95": 13
+      },
+      "root_energies": [
+        -301.8246454348082,
+        -301.82463319137935
+      ],
+      "mean_energy": -301.82463931309377
+    },
+    "MAE_steps_2_to_4": {
+      "full": 0.03578034053165544,
+      "no_response_updates": 0.0700256730469294
+    },
+    "MAE_reduction_percent": 48.90396768100125,
+    "control_choices": {
+      "full": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "no_response_updates": [
+        8,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "no_h2_crosscov": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        29
+      ]
+    },
+    "small_molecule_projection_4dp": {
+      "H2": "2.0000",
+      "HF": "4.9949",
+      "H2O": "5.9887",
+      "NH3": "6.9775",
+      "O2_pi_pi_star": "4.0000"
+    }
+  }
+}

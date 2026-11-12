@@ -1,0 +1,14 @@
+{
+  "schema": "minimal_valence_symmetry_input_v1",
+  "job": "symmetry_regression",
+  "key": "H2O_C1_C2v",
+  "design_role": "Symmetry regression",
+  "purpose": "Check stability under equivalent symmetry representations.",
+  "claim_tier": "Control",
+  "base_input": "h2o.json",
+  "representations": ["C1", "C2v"],
+  "thresholds": {
+    "scf_energy_hartree": 1.0e-8,
+    "minimum_principal_singular_value": 0.999999
+  }
+}

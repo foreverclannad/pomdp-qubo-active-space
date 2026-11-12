@@ -1,0 +1,13 @@
+name: pas-mokit
+channels:
+  - mokit
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - mokit=1.2.8
+  - numpy=2.3
+  - scipy
+  - h5py
+  - pyscf
+  - pip

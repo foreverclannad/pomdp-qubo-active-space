@@ -1,0 +1,91 @@
+{
+  "score_model": "fixed_orbital_terminal_descriptors_with_qit_boundary_v1",
+  "initial": {
+    "active_indices": [
+      1,
+      3
+    ],
+    "components": {
+      "occupation": 0.2259319191356577,
+      "composition": 0.5793030488233506,
+      "qit": 0.16882579934627975,
+      "quality": 0.324686922435096
+    },
+    "qit_boundary_penalty": 0.2315233721368191,
+    "selection_score": 0.24751246505615632
+  },
+  "recommended": {
+    "active_indices": [
+      2,
+      3
+    ],
+    "components": {
+      "occupation": 0.3138675663126973,
+      "composition": 0.5410598471701331,
+      "qit": 0.2637691665537214,
+      "quality": 0.3728988600121839
+    },
+    "qit_boundary_penalty": 0.1577223205984886,
+    "selection_score": 0.32032475314602105
+  },
+  "candidates": [
+    {
+      "active_indices": [
+        2,
+        3
+      ],
+      "components": {
+        "occupation": 0.3138675663126973,
+        "composition": 0.5410598471701331,
+        "qit": 0.2637691665537214,
+        "quality": 0.3728988600121839
+      },
+      "qit_boundary_penalty": 0.1577223205984886,
+      "selection_score": 0.32032475314602105
+    },
+    {
+      "active_indices": [
+        1,
+        3
+      ],
+      "components": {
+        "occupation": 0.2259319191356577,
+        "composition": 0.5793030488233506,
+        "qit": 0.16882579934627975,
+        "quality": 0.324686922435096
+      },
+      "qit_boundary_penalty": 0.2315233721368191,
+      "selection_score": 0.24751246505615632
+    },
+    {
+      "active_indices": [
+        1,
+        4
+      ],
+      "components": {
+        "occupation": 0.12782082960881902,
+        "composition": 0.5862904811638351,
+        "qit": 0.14036121573471694,
+        "quality": 0.28482417550245703
+      },
+      "qit_boundary_penalty": 0.1577223205984886,
+      "selection_score": 0.23225006863629416
+    },
+    {
+      "active_indices": [
+        2,
+        4
+      ],
+      "components": {
+        "occupation": 0.21559370569374514,
+        "composition": 0.504448279518317,
+        "qit": 0.16150353140382806,
+        "quality": 0.2938485055386301
+      },
+      "qit_boundary_penalty": 0.2315233721368191,
+      "selection_score": 0.21667404815969044
+    }
+  ],
+  "score_change": 0.07281228808986473,
+  "tolerance": 1e-10
+}

@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "Cite the accompanying manuscript when using PAS."
+type: software
+title: "PAS: Belief-Aware Orbital Selection"
+version: "1.0.0"
+license: MIT
+authors:
+  - name: "POMDP active-orbital selection authors"
+repository-code: "https://github.com/foreverclannad/pomdp-active-space"
+abstract: "Belief-aware active-space selection, external-data analysis, and reproducible molecular examples."
+preferred-citation:
+  type: unpublished
+  title: "Toward Self-Driving Multi-reference Calculations: Belief-Aware Orbital Selection"
+  authors:
+    - family-names: Li
+      given-names: Chen
+    - family-names: Pan
+      given-names: Kaifan
+    - family-names: Sun
+      given-names: Xinyu
+    - family-names: Song
+      given-names: Yinxuan
+    - family-names: He
+      given-names: Lianhua
+    - family-names: Lu
+      given-names: Teng
+    - family-names: Ma
+      given-names: Haibo
+    - family-names: Lan
+      given-names: Zhenggang
+    - family-names: Ma
+      given-names: Yingjin

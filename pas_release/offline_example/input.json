@@ -1,0 +1,75 @@
+{
+  "schema": "pas.offline.v1",
+  "name": "H4 / STO-3G / full-CI imported observations",
+  "source": {
+    "program": "PySCF",
+    "version": "2.15.0",
+    "method": "RHF orbitals and full-CI singlet",
+    "description": "Fixed exported data; selecting CAS(2e,2o) from a four-electron, four-orbital observation"
+  },
+  "orbitals": {
+    "format": "npz",
+    "file": "orbitals.npz"
+  },
+  "observations": {
+    "file": "observations.npz",
+    "orbitals": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "electrons": 4,
+    "orbital_file_sha256": "039a5562bd9d15e6337949261f55bffbadfa3433db13b1810c2ef20995422def",
+    "density_convention": "spin_summed_mo",
+    "entropy_unit": "natural_log",
+    "mutual_information_convention": "half_mutual_information"
+  },
+  "selection": {
+    "electrons": 2,
+    "orbitals": 2,
+    "reference_occupations": [
+      2,
+      2,
+      0,
+      0
+    ],
+    "initial_active": [
+      1,
+      3
+    ]
+  },
+  "states": {
+    "ids": [
+      "singlet_ground_state"
+    ],
+    "weights": [
+      1.0
+    ],
+    "spin_multiplicity": 1
+  },
+  "evidence": {
+    "enabled": [
+      "occupation",
+      "composition",
+      "qit"
+    ],
+    "weights": {
+      "occupation": 1.0,
+      "composition": 1.0,
+      "qit": 1.0
+    },
+    "composition_alpha": 0.45
+  },
+  "target": {
+    "atoms": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "angular_momenta": [
+      0
+    ]
+  }
+}

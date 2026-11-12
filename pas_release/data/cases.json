@@ -1,0 +1,490 @@
+{
+  "schema": "pas_paper_cases_v1",
+  "cases": {
+    "NX1_DMRG": {
+      "paper_name": "S1-min",
+      "original_run": "/tmp/lichen_pas_nx1_20261007_v18_determinant/run",
+      "original_source_id": "01738c5f5e0bc9c7ca322cd8078fa16ea3fa9f378f9fac705d9255821c5da9d5",
+      "manifest_id": "d736ed5d627284f9a73ffe243dd758b6e10921c972967bd9b75334f67feab25c",
+      "seed_id": "8fdc83aefcf93f5c9eeed507e1d7bd8c4102f245ac2e39ebecacb38717de8bf9",
+      "context_id": "e489a8db6ce077cbe296b2252cbfddacf19c05009024b3ceb7915d19892fcfa5",
+      "config": {
+        "acceptance_tolerance": 1e-06,
+        "annealing_restarts": 8,
+        "annealing_steps": 1000000,
+        "backend": "dmrg",
+        "channels": [
+          "occupation",
+          "composition",
+          "qit"
+        ],
+        "composition_model": "determinant_pair_v1",
+        "diagnostic_budget": 6,
+        "discrepancy_std": 0.25,
+        "dmrg_max_sweeps": 200,
+        "dmrg_optimize_m": 1000,
+        "dmrg_probe_m": 250,
+        "electron_partition_policy": "scf_roles_v1",
+        "evidence_noise_std": 0.125,
+        "evidence_prior_std": 0.25,
+        "exact_limit": 100000,
+        "fantasies": 128,
+        "full_window_survey": true,
+        "input_response_model": "posterior_descriptor_residual_v1",
+        "jitter": 1e-12,
+        "max_jitter": 1e-08,
+        "max_macro": 200,
+        "max_super_ci": 100,
+        "observation_noise": 0.0,
+        "optimization_budget": 6,
+        "orbital_optimizer": "quasi_newton",
+        "pool_size": 8,
+        "prior_mean": 0.5,
+        "prior_std": 0.25,
+        "response_model": "shared_projectors_v1",
+        "seed": 20261004,
+        "survey_model": "posterior_evidence_capture_v1",
+        "thr_ci": 0.0001,
+        "thr_energy": 1e-06,
+        "thr_orbital": 0.0001,
+        "threads": 32,
+        "voi_tolerance": 0.0001,
+        "weights": {
+          "composition": 1.0,
+          "occupation": 1.0,
+          "qit": 1.0
+        }
+      },
+      "paper_composition_purity_weight": 0.45,
+      "policies": {
+        "fixed_dmrg_policy": {
+          "from_action": 1,
+          "policy": {
+            "model": "molcas_native_standard_v1",
+            "schema": "pas_fixed_dmrg_policy_v1"
+          },
+          "schema": "pas_fixed_dmrg_transition_v1"
+        },
+        "planner_policy": {
+          "depth": 2,
+          "schema": "pas_optimize_only_two_step_v1"
+        },
+        "survey_window_policy": {
+          "frontier_temperature_hartree": 0.25,
+          "minimum_frontier_score": 0.05,
+          "minimum_target_projection": 0.05,
+          "model": "historical_ao_frontier_union_v1",
+          "schema": "pas_diagnostic_window_policy_v1"
+        }
+      },
+      "manifest_fields": [
+        "bootstrap_input_evidence",
+        "config",
+        "fixed_dmrg_policy",
+        "manifest_id",
+        "planner_policy",
+        "references",
+        "runtime",
+        "schema",
+        "seed_id",
+        "source_id",
+        "survey_window_policy"
+      ],
+      "events": 3,
+      "optimization_choices": 2,
+      "optimization_acceptance": [
+        true,
+        true
+      ],
+      "notes": "Original receipts retain their original config. Separate alpha=0.45 replay for legacy DMRG."
+    },
+    "CI_OO_DMRG": {
+      "paper_name": "CI-OO",
+      "original_run": "/tmp/lichen_pas_n00_20261007_v18_determinant/run",
+      "original_source_id": "01738c5f5e0bc9c7ca322cd8078fa16ea3fa9f378f9fac705d9255821c5da9d5",
+      "manifest_id": "f37b03985b2b828cfbce073f3e98dd19ff3ef98c17de8b7990af07b892c82d3f",
+      "seed_id": "4c426b284078871a4ad13d9e97aabfcf8470c752e6bfb98b76ddf6be070df593",
+      "context_id": "1b5dee0ddf2a40e98001af43a936c283461124ac213d733230937919ae9fcdb3",
+      "config": {
+        "acceptance_tolerance": 1e-06,
+        "annealing_restarts": 8,
+        "annealing_steps": 1000000,
+        "backend": "dmrg",
+        "channels": [
+          "occupation",
+          "composition",
+          "qit"
+        ],
+        "composition_model": "determinant_pair_v1",
+        "diagnostic_budget": 6,
+        "discrepancy_std": 0.25,
+        "dmrg_max_sweeps": 200,
+        "dmrg_optimize_m": 1000,
+        "dmrg_probe_m": 250,
+        "electron_partition_policy": "scf_roles_v1",
+        "evidence_noise_std": 0.125,
+        "evidence_prior_std": 0.25,
+        "exact_limit": 100000,
+        "fantasies": 128,
+        "full_window_survey": true,
+        "input_response_model": "posterior_descriptor_residual_v1",
+        "jitter": 1e-12,
+        "max_jitter": 1e-08,
+        "max_macro": 200,
+        "max_super_ci": 100,
+        "observation_noise": 0.0,
+        "optimization_budget": 6,
+        "orbital_optimizer": "quasi_newton",
+        "pool_size": 8,
+        "prior_mean": 0.5,
+        "prior_std": 0.25,
+        "response_model": "shared_projectors_v1",
+        "seed": 20261004,
+        "survey_model": "posterior_evidence_capture_v1",
+        "thr_ci": 0.0001,
+        "thr_energy": 1e-06,
+        "thr_orbital": 0.0001,
+        "threads": 32,
+        "voi_tolerance": 0.0001,
+        "weights": {
+          "composition": 1.0,
+          "occupation": 1.0,
+          "qit": 1.0
+        }
+      },
+      "paper_composition_purity_weight": 0.45,
+      "policies": {
+        "fixed_dmrg_policy": {
+          "from_action": 1,
+          "policy": {
+            "model": "molcas_native_standard_v1",
+            "schema": "pas_fixed_dmrg_policy_v1"
+          },
+          "schema": "pas_fixed_dmrg_transition_v1"
+        },
+        "planner_policy": {
+          "depth": 2,
+          "schema": "pas_optimize_only_two_step_v1"
+        },
+        "survey_window_policy": {
+          "frontier_temperature_hartree": 0.25,
+          "minimum_frontier_score": 0.05,
+          "minimum_target_projection": 0.05,
+          "model": "historical_ao_frontier_union_v1",
+          "schema": "pas_diagnostic_window_policy_v1"
+        }
+      },
+      "manifest_fields": [
+        "config",
+        "fixed_dmrg_policy",
+        "manifest_id",
+        "planner_policy",
+        "references",
+        "runtime",
+        "schema",
+        "seed_id",
+        "source_id",
+        "survey_window_policy"
+      ],
+      "events": 2,
+      "optimization_choices": 1,
+      "optimization_acceptance": [
+        true
+      ],
+      "notes": "Original receipts retain their original config. Separate alpha=0.45 replay for legacy DMRG."
+    },
+    "NX1_CAS": {
+      "paper_name": "S1-min",
+      "original_run": "/localdata/lichen/pas_cas_nc_20261014_r1/NX1/run",
+      "original_source_id": "7d79e6e0f7c5ba67dc96a8a60b2d196f310e869a41166737fa1dfe807a49260f",
+      "manifest_id": "a646cb30483da907789e4f7c92db8848d1a4c5d3a99c85f38d0e281ac20ee65b",
+      "seed_id": "ff01558bf92ecca7e485ec8aadeac33535035084eace4c4c40d290e8160ca7d3",
+      "context_id": "81e7d68fb5ba5c64f003ef95230ca9983954b1aa65c080020d684503539faff4",
+      "config": {
+        "acceptance_tolerance": 1e-06,
+        "annealing_restarts": 8,
+        "annealing_steps": 1000000,
+        "backend": "cas",
+        "channels": [
+          "occupation",
+          "composition"
+        ],
+        "composition_model": "determinant_pair_v1",
+        "composition_purity_weight": 0.45,
+        "diagnostic_budget": 6,
+        "discrepancy_std": 0.25,
+        "dmrg_max_sweeps": 200,
+        "dmrg_optimize_m": 1000,
+        "dmrg_probe_m": 250,
+        "electron_partition_policy": "scf_roles_v1",
+        "evidence_noise_std": 0.125,
+        "evidence_prior_std": 0.25,
+        "exact_limit": 100000,
+        "fantasies": 128,
+        "full_window_survey": true,
+        "input_response_model": "posterior_descriptor_residual_v1",
+        "jitter": 1e-12,
+        "max_jitter": 1e-08,
+        "max_macro": 200,
+        "max_super_ci": 100,
+        "observation_noise": 0.0,
+        "optimization_budget": 6,
+        "orbital_optimizer": "quasi_newton",
+        "pool_size": 8,
+        "prior_mean": 0.5,
+        "prior_std": 0.25,
+        "response_model": "shared_projectors_v1",
+        "seed": 20261004,
+        "survey_model": "posterior_evidence_capture_v1",
+        "thr_ci": 0.0001,
+        "thr_energy": 1e-06,
+        "thr_orbital": 0.0001,
+        "threads": 4,
+        "voi_tolerance": 0.0001,
+        "weights": {
+          "composition": 1.0,
+          "occupation": 1.0
+        }
+      },
+      "paper_composition_purity_weight": 0.45,
+      "policies": {
+        "planner_policy": {
+          "depth": 2,
+          "schema": "pas_optimize_only_two_step_v1"
+        },
+        "survey_window_policy": {
+          "frontier_temperature_hartree": 0.25,
+          "minimum_frontier_score": 0.05,
+          "minimum_target_projection": 0.05,
+          "model": "historical_ao_frontier_union_v1",
+          "schema": "pas_diagnostic_window_policy_v1"
+        }
+      },
+      "manifest_fields": [
+        "config",
+        "manifest_id",
+        "planner_policy",
+        "references",
+        "runtime",
+        "schema",
+        "seed_id",
+        "source_id",
+        "survey_window_policy"
+      ],
+      "events": 8,
+      "optimization_choices": 4,
+      "optimization_acceptance": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "notes": "Original receipts retain their original config. Separate alpha=0.45 replay for legacy DMRG."
+    },
+    "CI_OO_CAS": {
+      "paper_name": "CI-OO",
+      "original_run": "/localdata/lichen/pas_cas_nc_20261014_r1/CI_OO_N00/run",
+      "original_source_id": "7d79e6e0f7c5ba67dc96a8a60b2d196f310e869a41166737fa1dfe807a49260f",
+      "manifest_id": "525d778ca7cd34eef261f65be72b182f9be8281e4bba136143b4531e4df8cda2",
+      "seed_id": "8bee899c391ed6d59031ce0c26a68e39c4eee79634fef3e6dbb8b13c13a7eda8",
+      "context_id": "5660e7728f371712a4755cbd905f9d44633630e53cc5609cf09ec82a9dbf9f06",
+      "config": {
+        "acceptance_tolerance": 1e-06,
+        "annealing_restarts": 8,
+        "annealing_steps": 1000000,
+        "backend": "cas",
+        "channels": [
+          "occupation",
+          "composition"
+        ],
+        "composition_model": "determinant_pair_v1",
+        "composition_purity_weight": 0.45,
+        "diagnostic_budget": 6,
+        "discrepancy_std": 0.25,
+        "dmrg_max_sweeps": 200,
+        "dmrg_optimize_m": 1000,
+        "dmrg_probe_m": 250,
+        "electron_partition_policy": "scf_roles_v1",
+        "evidence_noise_std": 0.125,
+        "evidence_prior_std": 0.25,
+        "exact_limit": 100000,
+        "fantasies": 128,
+        "full_window_survey": true,
+        "input_response_model": "posterior_descriptor_residual_v1",
+        "jitter": 1e-12,
+        "max_jitter": 1e-08,
+        "max_macro": 200,
+        "max_super_ci": 100,
+        "observation_noise": 0.0,
+        "optimization_budget": 6,
+        "orbital_optimizer": "quasi_newton",
+        "pool_size": 8,
+        "prior_mean": 0.5,
+        "prior_std": 0.25,
+        "response_model": "shared_projectors_v1",
+        "seed": 20261004,
+        "survey_model": "posterior_evidence_capture_v1",
+        "thr_ci": 0.0001,
+        "thr_energy": 1e-06,
+        "thr_orbital": 0.0001,
+        "threads": 4,
+        "voi_tolerance": 0.0001,
+        "weights": {
+          "composition": 1.0,
+          "occupation": 1.0
+        }
+      },
+      "paper_composition_purity_weight": 0.45,
+      "policies": {
+        "planner_policy": {
+          "depth": 2,
+          "schema": "pas_optimize_only_two_step_v1"
+        },
+        "survey_window_policy": {
+          "frontier_temperature_hartree": 0.25,
+          "minimum_frontier_score": 0.05,
+          "minimum_target_projection": 0.05,
+          "model": "historical_ao_frontier_union_v1",
+          "schema": "pas_diagnostic_window_policy_v1"
+        }
+      },
+      "manifest_fields": [
+        "config",
+        "manifest_id",
+        "planner_policy",
+        "references",
+        "runtime",
+        "schema",
+        "seed_id",
+        "source_id",
+        "survey_window_policy"
+      ],
+      "events": 10,
+      "optimization_choices": 6,
+      "optimization_acceptance": [
+        true,
+        true,
+        false,
+        true,
+        false,
+        false
+      ],
+      "notes": "Original receipts retain their original config. Separate alpha=0.45 replay for legacy DMRG."
+    },
+    "TiF3": {
+      "paper_name": "TiF3",
+      "original_run": "/localdata/lichen/pas_tif3_alpha045_20261013_r1/33e25o/search",
+      "original_source_id": "b477d27cc2474574dd5f5cf510a0489c3bfd5a5fa269e577b5cca55cefeaa26b",
+      "manifest_id": "cee00510af67962d8654051f3d34c29fec9d833fc87b3806f5c23aa014680f06",
+      "seed_id": "488432a66cbc9bf9b0733270e4734920880f3a3196e58c37b3218e469c71d015",
+      "context_id": "081151127e0cf8d95d79bc97dbbe7d9eb30d53d3167d0f7069b2d873c16ff8a9",
+      "config": {
+        "acceptance_tolerance": 1e-06,
+        "annealing_restarts": 8,
+        "annealing_steps": 1000000,
+        "backend": "dmrg",
+        "channels": [
+          "occupation",
+          "composition",
+          "qit"
+        ],
+        "composition_model": "determinant_pair_v1",
+        "composition_purity_weight": 0.45,
+        "diagnostic_budget": 6,
+        "discrepancy_std": 0.25,
+        "dmrg_max_sweeps": 200,
+        "dmrg_optimize_m": 1000,
+        "dmrg_probe_m": 250,
+        "electron_partition_policy": "scf_roles_v1",
+        "evidence_noise_std": 0.125,
+        "evidence_prior_std": 0.25,
+        "exact_limit": 100000,
+        "fantasies": 128,
+        "full_window_survey": true,
+        "input_response_model": "posterior_descriptor_residual_v1",
+        "jitter": 1e-12,
+        "max_jitter": 1e-08,
+        "max_macro": 200,
+        "max_super_ci": 100,
+        "observation_noise": 0.0,
+        "optimization_budget": 6,
+        "orbital_optimization": false,
+        "orbital_optimizer": "quasi_newton",
+        "pool_size": 8,
+        "prior_mean": 0.5,
+        "prior_std": 0.25,
+        "response_model": "shared_projectors_v1",
+        "seed": 20261004,
+        "survey_model": "posterior_evidence_capture_v1",
+        "thr_ci": 0.0001,
+        "thr_energy": 1e-06,
+        "thr_orbital": 0.0001,
+        "threads": 16,
+        "voi_tolerance": 0.0001,
+        "weights": {
+          "composition": 1.0,
+          "occupation": 1.0,
+          "qit": 1.0
+        }
+      },
+      "paper_composition_purity_weight": 0.45,
+      "policies": {
+        "fixed_dmrg_policy": {
+          "from_action": 1,
+          "policy": {
+            "model": "molcas_native_standard_v1",
+            "schema": "pas_fixed_dmrg_policy_v1"
+          },
+          "schema": "pas_fixed_dmrg_transition_v1"
+        },
+        "planner_policy": {
+          "depth": 2,
+          "schema": "pas_optimize_only_two_step_v1"
+        },
+        "survey_window_policy": {
+          "frontier_temperature_hartree": 0.25,
+          "max_orbitals": 40,
+          "minimum_frontier_score": 0.05,
+          "minimum_target_projection": 0.05,
+          "model": "historical_ao_frontier_union_v1",
+          "schema": "pas_diagnostic_window_policy_v1"
+        }
+      },
+      "manifest_fields": [
+        "config",
+        "fixed_dmrg_policy",
+        "manifest_id",
+        "planner_policy",
+        "references",
+        "runtime",
+        "schema",
+        "seed_id",
+        "source_id",
+        "survey_window_policy"
+      ],
+      "events": 8,
+      "optimization_choices": 6,
+      "optimization_acceptance": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "notes": "Original receipts retain their original config. Separate alpha=0.45 replay for legacy DMRG."
+    }
+  },
+  "CI_CC": {
+    "scope": "initial endpoint only; no optimization trajectory",
+    "expected_result": "paper/expected_results.json"
+  },
+  "controls": {
+    "scope": "fixed 15-candidate fourth S1-min CAS pool; choices are zero-based",
+    "original_directory": "/localdata/lichen/pas_nx1_round4_controls_20261015_r1"
+  },
+  "small_molecules": {
+    "source": "paper/small_molecules/provenance.json",
+    "scope": "independent valence controls, not PAS optimization trajectories"
+  }
+}

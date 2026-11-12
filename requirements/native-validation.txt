@@ -1,0 +1,3 @@
+# Dependencies for the optional finite-Hubbard-chain Block2/FCI comparisons.
+-r replay-validated.txt
+block2==0.5.3

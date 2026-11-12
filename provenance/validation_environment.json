@@ -1,0 +1,16 @@
+{
+  "scope": "Local environment used to validate the paper examples and optional solver comparisons",
+  "python": "3.11.15",
+  "platform": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "packages": {
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "h5py": "3.16.0",
+    "pyscf": "2.13.0",
+    "pytest": "9.0.3",
+    "block2": "0.5.3",
+    "setuptools": "82.0.1",
+    "wheel": "0.47.0"
+  },
+  "compiler": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+}

@@ -1,0 +1,31 @@
+{
+  "NX1_DMRG": {
+    "references_file": {
+      "path": "/home/lichen/staging/pas_nx1_20261007_v18_complementarity/determinant/references.json",
+      "sha256": "0cc97d4d4ac9cbb82169cc1713536338fd8e714ea5bfeee56f9e1311ced076a8"
+    },
+    "bootstrap_evidence_file": {
+      "path": "/home/lichen/staging/pas_nx1_20261007_v15_posterior_r1/inputs/bootstrap_replay.json",
+      "sha256": "c4acb3eb03871147fb7352b8fc5131fe7ad0c6efbd0afbf0238293b72e8f8812"
+    }
+  },
+  "CI_OO_DMRG": {
+    "references_file": {
+      "path": "/home/lichen/staging/pas_n00_20261007_v18_determinant/inputs/references.json",
+      "sha256": "a0c1c7ea3997c538bb0f79b29259d35ecd5fbc14c947da632e0af939e9cdde37"
+    }
+  },
+  "NX1_CAS": {
+    "references_file": {
+      "path": "/home/lichen/staging/pas_cas_nc_20261014_r1/inputs/NX1/references.json",
+      "sha256": "894b0fcd5260446bcf73d2ab76cb0c068bc2d6033d59a28615556e9a6c48866d"
+    }
+  },
+  "CI_OO_CAS": {
+    "references_file": {
+      "path": "/home/lichen/staging/pas_cas_nc_20261014_r1/inputs/CI_OO_N00/references.json",
+      "sha256": "d807a3c1a0456f5e8420c8d2dc1bb1561288e7b056d6b1d9b9e418f82a447fed"
+    }
+  },
+  "TiF3": {}
+}
