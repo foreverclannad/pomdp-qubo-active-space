@@ -47,6 +47,15 @@ The H4 example selects orbitals `[2, 3]` from supplied orbital, density and
 entanglement arrays. Replace these arrays to analyze your own calculation.
 See [external-data input](docs/offline-input.md). MOKIT/FCH import is optional.
 
+Natural occupations can also be entered directly in JSON:
+
+```bash
+pas offline select ./h4-example/input-natural.json --output ./natural-result
+```
+
+The [natural-orbital guide](pas_release/offline_example/NATURAL_ORBITALS.md)
+lists the accompanying data and includes an occupation-only input.
+
 ## Results and tests
 
 `summary.txt` gives the main results, `result.json` stores full-precision values,

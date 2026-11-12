@@ -17,6 +17,10 @@ initial choice `[1, 3]`. The selection score changes from approximately
 `0.247512465056` to `0.320324753146`. Four legal candidates are enumerated.
 See `expected.json` for the full-precision reference.
 
+For direct natural-orbital occupations, use `input-natural.json`. The complete
+inputs, matching orbital/QIT data and comparison commands are described in
+[Direct natural-orbital occupations](NATURAL_ORBITALS.md).
+
 `result-arrays/summary.txt` gives the readable result; `result.json` and
 `candidates.csv` contain the evidence components and QIT boundary penalty.
 `objective.npz` exports the actual QUBO. Choose a new output directory for each

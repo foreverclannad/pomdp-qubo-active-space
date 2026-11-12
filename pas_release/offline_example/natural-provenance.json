@@ -1,0 +1,24 @@
+{
+  "source_program": "PySCF",
+  "pyscf": "2.13.0",
+  "numpy": "2.4.3",
+  "method": "FCI in RHF orbitals, density diagonalization, then FCI in natural orbitals",
+  "basis": "STO-3G",
+  "orbital_order": "Descending natural occupation; largest-magnitude AO coefficient positive",
+  "source_energy_hartree": -2.102608480955424,
+  "natural_basis_energy_hartree": -2.102608480955424,
+  "natural_density_diagonal_max_error": 1.9984014443252818e-15,
+  "ao_density_invariance_max_error": 6.661338147750939e-16,
+  "density_trace": 4.000000000000001,
+  "fci_norm": 1.0000000000000002,
+  "entropy_method": "Exact FCI Fock-space partial trace in the natural-orbital basis",
+  "file_sha256": {
+    "expected-natural.json": "70183cbc9859c35695b515fac8b667cc72f5f2293acb03e17b9cb786299804ea",
+    "input-natural-density.json": "2db8034fc9e1339ae452e06029940f14c2d3c6812adfeb17266bfb8de680a498",
+    "input-natural-occupation.json": "eb255f2104e9f2679cf9b90066e96bb0875bde3659aad885663fe2c038c90805",
+    "input-natural.json": "08cefdf1d31c0211ca74fd5941823ad241d6cb286cec1a21a1b1129c7bd80937",
+    "natural-observations.npz": "0098770f787fbdf0157658bb16f791b34f377c28e8bdc6f31ee4ad0e5b9fd07e",
+    "natural-orbitals.npz": "aba4e33285dbf4258066b3b8f06cdb9e6ba72c94c49b8644d830a3cdde96b1e3",
+    "natural-qit.npz": "8252794652b920d19a888128bf35d1484050ffdae5aaf09cbe6de4f60baf900e"
+  }
+}

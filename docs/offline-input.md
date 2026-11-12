@@ -16,6 +16,17 @@ The initial space is `[1, 3]`; the recommended space is `[2, 3]`. Selection scor
 are 0.247512465056 and 0.320324753146. All four legal candidates are enumerated.
 `expected.json` contains the full expected result.
 
+For direct natural-orbital occupations, run:
+
+```bash
+pas offline check ./h4-example/input-natural.json
+pas offline select ./h4-example/input-natural.json --output ./natural-result
+```
+
+The [natural-orbital example](../pas_release/offline_example/NATURAL_ORBITALS.md)
+provides complete inputs, matching orbitals and QIT arrays, an occupation-only
+input, a full-density comparison, and a PySCF regeneration script.
+
 ## Input fields
 
 Copy the example input and replace its file paths and system settings. Paths are
@@ -26,7 +37,8 @@ relative to the input JSON. Public atom and orbital indices start at 1.
 | `schema` | `pas.offline.v1` |
 | `name`, `source` | Case name, generating program, method and optional version |
 | `orbitals.format`, `orbitals.file` | `npz` or `mokit_fch`, and the orbital file |
-| `observations.file` | NPZ file containing the selected evidence arrays |
+| `observations.file` | NPZ file containing the selected evidence arrays; omit when no arrays are needed |
+| `observations.natural_occupations` | Optional inline spin-summed natural occupations, one row per state; requires `density_convention: spin_summed_natural_orbital` and the matching natural orbitals |
 | `observations.orbitals` | Full-MO indices defining the observation-array order |
 | `observations.electrons` | Electron count in the observed space |
 | `observations.orbital_file_sha256` | SHA-256 of the corresponding orbital file |
@@ -56,7 +68,11 @@ For N full MOs, M observed orbitals and R states, the orbital NPZ contains:
 Supply observations for the enabled channels:
 
 - Occupation: `densities[R,M,M]`, the full real spin-summed MO 1-RDM;
-  `density_convention` is `spin_summed_mo`.
+  `density_convention` is `spin_summed_mo`. Alternatively, provide
+  `observations.natural_occupations[R,M]` directly in JSON with
+  `density_convention: spin_summed_natural_orbital`. PAS constructs a diagonal
+  1-RDM in the supplied orbital order. Each row must sum to the observed electron
+  count, with values in [0, 2]. Use one density source per input.
 - QIT: `single_orbital_entropy[R,M]` and `mutual_information[R,M,M]`;
   `entropy_unit` is `natural_log`, and `mutual_information_convention` is
   `half_mutual_information`, meaning `0.5*(s_i+s_j-s_ij)`.
@@ -64,6 +80,10 @@ Supply observations for the enabled channels:
 
 Use finite numeric arrays without pickle objects. The program checks symmetry,
 orbital orthogonality, density traces, state dimensions and enabled evidence.
+For natural occupations, all state rows must refer to the same supplied natural
+orbitals. QIT must also use this basis. State-averaged natural occupations do not
+replace the individual state densities; use full per-state 1-RDMs when those
+densities are not diagonal in the common orbital basis.
 
 ## Optional MOKIT import
 

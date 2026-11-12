@@ -24,22 +24,127 @@ def save(path, raw):
     path.write_text(json.dumps(raw))
 
 
-def test_reviewer_example_cli_and_reference(tmp_path, capsys):
+@pytest.mark.parametrize("variant", ["arrays", "natural", "natural-occupation"])
+def test_reviewer_example_cli_and_reference(tmp_path, capsys, variant):
     path, _ = prepared(tmp_path)
+    if variant != "arrays":
+        path = path.with_name("input-" + variant + ".json")
     assert main(["offline", "check", str(path), "--json"]) == 0
     assert json.loads(capsys.readouterr().out)["legal_candidates"] == 4
     output = tmp_path / "result"
     assert main(["offline", "select", str(path), "--output", str(output), "--json"]) == 0
     actual = json.loads(capsys.readouterr().out)
-    expected = json.loads((path.parent / "expected.json").read_text())
+    name = "expected.json" if variant == "arrays" else "expected-natural.json"
+    expected = json.loads((path.parent / name).read_text())
     tolerance = expected.pop("tolerance")
+    if variant != "arrays":
+        expected = expected["all_evidence" if variant == "natural" else "occupation_only"]
     compare_values({key: actual[key] for key in expected}, expected, tolerance)
+    if variant == "natural":
+        reference = path.with_name("input-natural-density.json")
+        # This density comes from an independent FCI solve in the natural basis.
+        np.testing.assert_allclose(
+            load(path).densities, load(reference).densities, atol=1e-10, rtol=0
+        )
+        full = offline.select(reference, tmp_path / "full-density")
+        compare_values({key: full[key] for key in expected}, expected, tolerance)
+        assert actual["audit"]["density_input"]["format"] == "natural_occupations"
     assert actual["new_quantum_chemistry_calculations"] == 0
     assert actual["optimized_candidate_energy_hartree"] is None
     assert len((output / "candidates.csv").read_text().splitlines()) == 5
     assert all(i >= 1 for row in actual["solver"]["visited_candidates"] for i in row)
     with pytest.raises(ValueError, match="new result directory"):
         offline.select(path, output)
+
+
+def test_natural_occupations_preserve_state_weights_and_observation_order(tmp_path):
+    path, _ = prepared(tmp_path)
+    path = path.with_name("input-natural-occupation.json")
+    raw = json.loads(path.read_text())
+    first = np.array(raw["observations"]["natural_occupations"][0])
+    occupations = np.array([first, first[[1, 0, 3, 2]]])
+    weights = np.array([0.25, 0.75])
+    raw["states"].update(ids=["state-a", "state-b"], weights=weights.tolist())
+    raw["observations"]["natural_occupations"] = occupations.tolist()
+    save(path, raw)
+    before = offline.select(path, tmp_path / "ordered")
+    for row in before["candidates"]:
+        selected = occupations[:, np.array(row["active_indices"]) - 1]
+        expected = weights @ np.mean(selected * (2 - selected), axis=1)
+        assert row["selection_score"] == pytest.approx(expected, abs=1e-12)
+    permutation = np.array([2, 0, 3, 1])
+    raw["observations"]["orbitals"] = (permutation + 1).tolist()
+    raw["observations"]["natural_occupations"] = occupations[:, permutation].tolist()
+    save(path, raw)
+    after = offline.select(path, tmp_path / "permuted")
+    compare_values(after["candidates"], before["candidates"], tolerance=1e-12)
+
+
+def test_invalid_natural_occupations_fail_before_selection(tmp_path, monkeypatch):
+    path, _ = prepared(tmp_path)
+    path = path.with_name("input-natural.json")
+    raw = json.loads(path.read_text())
+    monkeypatch.setattr(
+        offline.qubo, "solve", lambda *a: pytest.fail("invalid input reached search")
+    )
+    bad = [
+        (
+            "convention",
+            lambda x: x["observations"].update(density_convention="spin_summed_mo"),
+            "spin_summed_natural_orbital",
+        ),
+        (
+            "missing",
+            lambda x: x["observations"].pop("natural_occupations"),
+            "requires observations.natural_occupations",
+        ),
+        ("shape", lambda x: x["observations"].update(natural_occupations=[[2, 2]]), "shape"),
+        ("states", lambda x: x["states"].update(ids=["a", "b"], weights=[0.5, 0.5]), "shape"),
+        (
+            "nonfinite",
+            lambda x: x["observations"].update(natural_occupations=[[float("nan"), 1.8, 0.2, 0.1]]),
+            "Non-finite",
+        ),
+        (
+            "boolean",
+            lambda x: x["observations"].update(natural_occupations=[[True, 1.8, 0.2, 0.1]]),
+            "numeric rows",
+        ),
+        (
+            "range",
+            lambda x: x["observations"].update(natural_occupations=[[2.1, 1.7, 0.1, 0.1]]),
+            "outside",
+        ),
+        (
+            "trace",
+            lambda x: x["observations"].update(natural_occupations=[[1.9, 1.7, 0.1, 0.1]]),
+            "trace",
+        ),
+        (
+            "density",
+            lambda x: x["observations"].update(file="natural-observations.npz"),
+            "one density source",
+        ),
+        (
+            "fch",
+            lambda x: x["observations"].update(fch_density="Total SCF Density"),
+            "one density source",
+        ),
+        (
+            "disabled",
+            lambda x: x.update(evidence=dict(enabled=["composition", "qit"])),
+            "occupation channel",
+        ),
+        ("qit", lambda x: x["observations"].pop("file"), "Enabled qit evidence"),
+    ]
+    for name, change, message in bad:
+        altered = copy.deepcopy(raw)
+        change(altered)
+        save(path, altered)
+        output = tmp_path / name
+        with pytest.raises(ValueError, match=message):
+            offline.select(path, output)
+        assert not output.exists()
 
 
 def test_channel_masks_match_independent_enumeration(tmp_path):

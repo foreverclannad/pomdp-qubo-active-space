@@ -210,16 +210,19 @@ def _observations(raw, bind, frame, enabled):
             "entropy_unit",
             "mutual_information_convention",
             "fch_density",
+            "natural_occupations",
         ),
-        ("file", "orbitals", "electrons", "orbital_file_sha256"),
+        ("orbitals", "electrons", "orbital_file_sha256"),
         "observations",
     )
     require(
         obs["orbital_file_sha256"] == orbital_file["sha256"],
         "observations.orbital_file_sha256: observations are bound to a different orbital file",
     )
-    observed_file = bind(obs["file"])
-    arrays = load_npz(observed_file["path"], observed_file["sha256"])
+    arrays = {}
+    if "file" in obs:
+        observed_file = bind(obs["file"])
+        arrays = load_npz(observed_file["path"], observed_file["sha256"])
     measured = indices(obs["orbitals"], nmo, "observations.orbitals")
     count = len(measured)
     nelec = integer(obs["electrons"], 0, 2 * count, "observations.electrons")
@@ -249,12 +252,44 @@ def _observations(raw, bind, frame, enabled):
         "Observed electron count and spin are incompatible",
     )
     densities = entropy = mutual = None
+    natural = "natural_occupations" in obs
+    require(
+        not natural or "occupation" in enabled,
+        "observations.natural_occupations requires the occupation channel",
+    )
+    require(
+        obs.get("density_convention") != "spin_summed_natural_orbital" or natural,
+        "spin_summed_natural_orbital requires observations.natural_occupations",
+    )
     if "occupation" in enabled:
-        require(
-            obs.get("density_convention") == "spin_summed_mo",
-            "observations.density_convention: expected spin_summed_mo",
-        )
-        if "fch_density" in obs:
+        if natural:
+            require(
+                obs.get("density_convention") == "spin_summed_natural_orbital",
+                "Natural occupations require density_convention=spin_summed_natural_orbital; "
+                "the supplied orbital columns must be the corresponding natural orbitals",
+            )
+            require(
+                "densities" not in arrays and "fch_density" not in obs,
+                "Choose one density source: natural_occupations, densities or fch_density",
+            )
+            occupations = obs["natural_occupations"]
+            require(
+                isinstance(occupations, list)
+                and all(
+                    isinstance(row, list) and all(type(v) in (int, float) for v in row)
+                    for row in occupations
+                ),
+                "observations.natural_occupations: expected numeric rows, one per state",
+            )
+            occupations = array(occupations, (len(ids), count), "observations.natural_occupations")
+            densities = np.zeros((len(ids), count, count))
+            densities[:, np.arange(count), np.arange(count)] = occupations
+        else:
+            require(
+                obs.get("density_convention") == "spin_summed_mo",
+                "observations.density_convention: expected spin_summed_mo",
+            )
+        if not natural and "fch_density" in obs:
             require(
                 fmt == "mokit_fch" and len(ids) == 1 and "densities" not in arrays,
                 "fch_density requires mokit_fch, one state, and no competing densities array",
@@ -263,8 +298,14 @@ def _observations(raw, bind, frame, enabled):
 
             full = read_density(orbital_file["path"], obs["fch_density"], orbitals)
             arrays["densities"] = full[np.ix_(measured, measured)][None, :, :]
-        require("densities" in arrays, "Enabled occupation evidence needs the densities array")
-        densities = array(arrays["densities"], (len(ids), count, count), "observations.densities")
+        if not natural:
+            require(
+                "densities" in arrays,
+                "Enabled occupation evidence needs densities, fch_density or natural_occupations",
+            )
+            densities = array(
+                arrays["densities"], (len(ids), count, count), "observations.densities"
+            )
         metrics.validate_densities(densities, sw, nelec)
     else:
         require("fch_density" not in obs, "fch_density requires the occupation channel")
@@ -505,6 +546,13 @@ def load(path):
         measured_electrons=observations.electrons,
         orbital_indices_are_one_based=True,
     )
+    if "natural_occupations" in raw["observations"]:
+        audit["density_input"] = dict(
+            format="natural_occupations",
+            basis="input_declares_corresponding_natural_orbitals_for_each_state",
+            construction="diagonal_in_supplied_orbital_order",
+            natural_occupations=raw["observations"]["natural_occupations"],
+        )
     spec = OfflineData(
         raw,
         files,

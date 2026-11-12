@@ -1,0 +1,61 @@
+{
+  "schema": "pas.offline.v1",
+  "name": "H4 / STO-3G / full-CI natural occupations",
+  "source": {
+    "program": "PySCF",
+    "version": "2.13.0",
+    "method": "Singlet full-CI natural orbitals and occupations",
+    "description": "All evidence uses the same FCI natural-orbital basis"
+  },
+  "orbitals": {
+    "format": "npz",
+    "file": "natural-orbitals.npz"
+  },
+  "observations": {
+    "orbitals": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "electrons": 4,
+    "orbital_file_sha256": "aba4e33285dbf4258066b3b8f06cdb9e6ba72c94c49b8644d830a3cdde96b1e3",
+    "density_convention": "spin_summed_natural_orbital",
+    "natural_occupations": [
+      [
+        1.931013779993419,
+        1.8313052314690375,
+        0.17456102394480535,
+        0.06311996459273583
+      ]
+    ]
+  },
+  "selection": {
+    "electrons": 2,
+    "orbitals": 2,
+    "reference_occupations": [
+      2,
+      2,
+      0,
+      0
+    ],
+    "initial_active": [
+      1,
+      3
+    ]
+  },
+  "states": {
+    "ids": [
+      "singlet_ground_state"
+    ],
+    "weights": [
+      1.0
+    ],
+    "spin_multiplicity": 1
+  },
+  "evidence": {
+    "enabled": [
+      "occupation"
+    ]
+  }
+}
