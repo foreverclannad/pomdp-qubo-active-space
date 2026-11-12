@@ -17,7 +17,7 @@ chemistry = ["pyscf"]
 validation = ["pytest>=9"]
 
 [project.urls]
-Repository = "https://github.com/foreverclannad/pomdp-active-space"
+Repository = "https://github.com/foreverclannad/pas-active-space"
 
 [project.scripts]
 pas = "pas_release.cli:main"

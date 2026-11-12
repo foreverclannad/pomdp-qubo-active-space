@@ -1,7 +1,9 @@
 # Paper examples
 
 All commands run locally on Linux or WSL. Install the dependencies listed in
-the root README and extract the data archives before running the paper replay.
+the root README and extract the data archives from the
+[PAS 1.0.0 release](https://github.com/foreverclannad/pas-active-space/releases/tag/v1.0.0)
+before running the paper replay.
 
 ## Small molecules
 

@@ -9,6 +9,8 @@ Multi-reference Calculations: Belief-Aware Orbital Selection*.
 Use Linux or WSL with Python 3.11. The paper search replay requires a C compiler (`cc`).
 
 ```bash
+git clone https://github.com/foreverclannad/pas-active-space.git
+cd pas-active-space
 python -m pip install -r requirements/replay-validated.txt
 python -m pip install --no-deps .
 pas --version
@@ -16,8 +18,10 @@ pas --version
 
 ## Reproduce the paper examples
 
-Extract all `PAS_data_*.zip` archives into one directory on a Linux filesystem.
-This creates `evidence/`.
+Download all six `PAS_data_*.zip` archives from the
+[PAS 1.0.0 release](https://github.com/foreverclannad/pas-active-space/releases/tag/v1.0.0).
+Extract them into one directory on a Linux filesystem. This creates `evidence/`.
+The release also provides the complete code package, reference results and checksums.
 
 ```bash
 pas reproduce paper --evidence /path/to/evidence --output ./paper-results

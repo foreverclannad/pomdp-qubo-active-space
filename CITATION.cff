@@ -6,7 +6,7 @@ version: "1.0.0"
 license: MIT
 authors:
   - name: "POMDP active-orbital selection authors"
-repository-code: "https://github.com/foreverclannad/pomdp-active-space"
+repository-code: "https://github.com/foreverclannad/pas-active-space"
 abstract: "Belief-aware active-space selection, external-data analysis, and reproducible molecular examples."
 preferred-citation:
   type: unpublished
